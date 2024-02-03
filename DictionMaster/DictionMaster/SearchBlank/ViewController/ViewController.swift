@@ -15,6 +15,8 @@ class SearchBlank: UIViewController {
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var searchButton: UIButton!
     
+    var viewModel: SearchViewModel = SearchViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
@@ -46,7 +48,6 @@ class SearchBlank: UIViewController {
         searchButton.titleLabel?.font = .systemFont(ofSize: 18, weight: .bold)
         searchButton.titleLabel?.font.fontDescriptor.withDesign(.rounded)
         searchButton.setTitleColor(.white, for: .normal)
-        
     }
     
     private func configurePlaceholderStyle() {
@@ -58,8 +59,17 @@ class SearchBlank: UIViewController {
         searchTextField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
     }
 
+    @IBAction func searchButton(_ sender: Any) {
+        viewModel.fetchData(word: searchTextField.text ?? "")
+    }
+    
 }
 
 extension SearchBlank: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
 }
