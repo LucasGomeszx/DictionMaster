@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="119" id="KGk-i7-Jjw" customClass="AudioTableViewCell" customModule="DictionMaster" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="376" height="119"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="376" height="119"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fva-sG-SCf">
+                        <rect key="frame" x="16" y="16" width="344" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5a-Bp-SoW">
+                        <rect key="frame" x="78" y="65.666666666666671" width="282" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2RU-3o-P2z">
+                        <rect key="frame" x="16" y="53" width="46" height="46"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="audio-speaker-on" translatesAutoresizingMaskIntoConstraints="NO" id="Zcb-tN-A9F">
+                                <rect key="frame" x="11" y="11" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="GDY-DG-mpd"/>
+                                    <constraint firstAttribute="width" constant="24" id="pgK-k8-u6f"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Zcb-tN-A9F" firstAttribute="centerY" secondItem="2RU-3o-P2z" secondAttribute="centerY" id="93h-Dt-DXA"/>
+                            <constraint firstAttribute="height" constant="46" id="Cph-Y1-SU1"/>
+                            <constraint firstItem="Zcb-tN-A9F" firstAttribute="centerX" secondItem="2RU-3o-P2z" secondAttribute="centerX" id="f4u-7E-Auk"/>
+                            <constraint firstAttribute="width" constant="46" id="sXf-DE-q8A"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Fva-sG-SCf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="92q-Q6-fkI"/>
+                    <constraint firstAttribute="trailing" secondItem="z5a-Bp-SoW" secondAttribute="trailing" constant="16" id="UNG-cw-BNH"/>
+                    <constraint firstAttribute="trailing" secondItem="Fva-sG-SCf" secondAttribute="trailing" constant="16" id="hZV-7p-gDG"/>
+                    <constraint firstItem="Fva-sG-SCf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="iaV-jb-FZX"/>
+                    <constraint firstItem="2RU-3o-P2z" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="mUG-tJ-Yoz"/>
+                    <constraint firstItem="z5a-Bp-SoW" firstAttribute="leading" secondItem="2RU-3o-P2z" secondAttribute="trailing" constant="16" id="oKS-ES-WWR"/>
+                    <constraint firstItem="2RU-3o-P2z" firstAttribute="top" secondItem="Fva-sG-SCf" secondAttribute="bottom" constant="16" id="sIm-RD-8UU"/>
+                    <constraint firstItem="z5a-Bp-SoW" firstAttribute="centerY" secondItem="2RU-3o-P2z" secondAttribute="centerY" id="tbP-AS-z5F"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="pronunciationLabel" destination="z5a-Bp-SoW" id="lY7-mb-RjX"/>
+                <outlet property="speakerContainer" destination="2RU-3o-P2z" id="ov8-fc-abw"/>
+                <outlet property="speakerImage" destination="Zcb-tN-A9F" id="wfD-OD-UEK"/>
+                <outlet property="wordLabel" destination="Fva-sG-SCf" id="nak-ik-6xa"/>
+            </connections>
+            <point key="canvasLocation" x="181.67938931297709" y="46.126760563380287"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="audio-speaker-on" width="23" height="21"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

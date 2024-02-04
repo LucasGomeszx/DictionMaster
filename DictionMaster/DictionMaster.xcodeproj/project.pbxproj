@@ -22,6 +22,10 @@
 		55131C8C2B6EF656002B8F59 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55131C8A2B6EF656002B8F59 /* SearchResultViewController.swift */; };
 		55131C8F2B6F058F002B8F59 /* SearchResultView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55131C8E2B6F058F002B8F59 /* SearchResultView.storyboard */; };
 		55131C912B6F2F84002B8F59 /* SearchResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55131C902B6F2F84002B8F59 /* SearchResultViewModel.swift */; };
+		5593F7702B6FC65500AC3326 /* AudioTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5593F76E2B6FC65500AC3326 /* AudioTableViewCell.swift */; };
+		5593F7712B6FC65500AC3326 /* AudioTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5593F76F2B6FC65500AC3326 /* AudioTableViewCell.xib */; };
+		5593F7752B6FD26400AC3326 /* MeaningTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5593F7732B6FD26400AC3326 /* MeaningTableViewCell.swift */; };
+		5593F7762B6FD26400AC3326 /* MeaningTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5593F7742B6FD26400AC3326 /* MeaningTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +46,10 @@
 		55131C8A2B6EF656002B8F59 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		55131C8E2B6F058F002B8F59 /* SearchResultView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchResultView.storyboard; sourceTree = "<group>"; };
 		55131C902B6F2F84002B8F59 /* SearchResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewModel.swift; sourceTree = "<group>"; };
+		5593F76E2B6FC65500AC3326 /* AudioTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioTableViewCell.swift; sourceTree = "<group>"; };
+		5593F76F2B6FC65500AC3326 /* AudioTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AudioTableViewCell.xib; sourceTree = "<group>"; };
+		5593F7732B6FD26400AC3326 /* MeaningTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeaningTableViewCell.swift; sourceTree = "<group>"; };
+		5593F7742B6FD26400AC3326 /* MeaningTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MeaningTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +175,7 @@
 		55131C862B6EF5F5002B8F59 /* SearchResult */ = {
 			isa = PBXGroup;
 			children = (
+				5593F76C2B6FC61800AC3326 /* Cells */,
 				55131C892B6EF63C002B8F59 /* ViewModel */,
 				55131C882B6EF636002B8F59 /* ViewController */,
 				55131C872B6EF631002B8F59 /* View */,
@@ -196,6 +205,33 @@
 				55131C902B6F2F84002B8F59 /* SearchResultViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		5593F76C2B6FC61800AC3326 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				5593F76D2B6FC62200AC3326 /* AudioCell */,
+				5593F7722B6FD23700AC3326 /* MeaningCell */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		5593F76D2B6FC62200AC3326 /* AudioCell */ = {
+			isa = PBXGroup;
+			children = (
+				5593F76E2B6FC65500AC3326 /* AudioTableViewCell.swift */,
+				5593F76F2B6FC65500AC3326 /* AudioTableViewCell.xib */,
+			);
+			path = AudioCell;
+			sourceTree = "<group>";
+		};
+		5593F7722B6FD23700AC3326 /* MeaningCell */ = {
+			isa = PBXGroup;
+			children = (
+				5593F7732B6FD26400AC3326 /* MeaningTableViewCell.swift */,
+				5593F7742B6FD26400AC3326 /* MeaningTableViewCell.xib */,
+			);
+			path = MeaningCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,9 +293,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				55131C602B6E79ED002B8F59 /* LaunchScreen.storyboard in Resources */,
+				5593F7762B6FD26400AC3326 /* MeaningTableViewCell.xib in Resources */,
 				55131C5D2B6E79ED002B8F59 /* Assets.xcassets in Resources */,
 				55131C8F2B6F058F002B8F59 /* SearchResultView.storyboard in Resources */,
 				55131C5B2B6E79EC002B8F59 /* Main.storyboard in Resources */,
+				5593F7712B6FC65500AC3326 /* AudioTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +308,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5593F7752B6FD26400AC3326 /* MeaningTableViewCell.swift in Sources */,
 				55131C6E2B6E8BA2002B8F59 /* UICollor+Extension.swift in Sources */,
 				55131C912B6F2F84002B8F59 /* SearchResultViewModel.swift in Sources */,
 				55131C812B6EB2FF002B8F59 /* WordModel.swift in Sources */,
@@ -278,6 +317,7 @@
 				55131C582B6E79EC002B8F59 /* ViewController.swift in Sources */,
 				55131C542B6E79EC002B8F59 /* AppDelegate.swift in Sources */,
 				55131C562B6E79EC002B8F59 /* SceneDelegate.swift in Sources */,
+				5593F7702B6FC65500AC3326 /* AudioTableViewCell.swift in Sources */,
 				55131C7A2B6EAF1F002B8F59 /* Service.swift in Sources */,
 				55131C7C2B6EAF65002B8F59 /* NetworkHandler.swift in Sources */,
 				55131C7E2B6EB00C002B8F59 /* ServiceManeger.swift in Sources */,
