@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -23,32 +22,28 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="nTN-PQ-z5Z">
-                        <rect key="frame" x="16" y="53" width="330" height="125"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </tableView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AAY-9t-ggd">
+                        <rect key="frame" x="16" y="53" width="310" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="nTN-PQ-z5Z" secondAttribute="bottom" constant="16" id="1XA-aL-8dg"/>
                     <constraint firstItem="9Mc-4D-XDf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="C7S-eD-g1r"/>
                     <constraint firstItem="9Mc-4D-XDf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="DMR-Oy-LhZ"/>
                     <constraint firstAttribute="trailing" secondItem="9Mc-4D-XDf" secondAttribute="trailing" constant="16" id="La1-ru-5Mg"/>
-                    <constraint firstAttribute="trailing" secondItem="nTN-PQ-z5Z" secondAttribute="trailing" constant="16" id="fQ9-eH-aCL"/>
-                    <constraint firstItem="nTN-PQ-z5Z" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="iKY-bd-TlA"/>
-                    <constraint firstItem="nTN-PQ-z5Z" firstAttribute="top" secondItem="9Mc-4D-XDf" secondAttribute="bottom" constant="16" id="wHS-yO-Wz6"/>
+                    <constraint firstItem="AAY-9t-ggd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="O6e-Cg-nHM"/>
+                    <constraint firstItem="AAY-9t-ggd" firstAttribute="top" secondItem="9Mc-4D-XDf" secondAttribute="bottom" constant="16" id="Stv-9l-JPQ"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="AAY-9t-ggd" secondAttribute="trailing" constant="16" id="qMz-Gi-xOR"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="exempleTableView" destination="nTN-PQ-z5Z" id="YXM-eL-Lo0"/>
+                <outlet property="exampleLabel" destination="AAY-9t-ggd" id="muN-0C-goy"/>
                 <outlet property="meaningLabel" destination="9Mc-4D-XDf" id="ZVx-Eq-rpw"/>
             </connections>
             <point key="canvasLocation" x="170.99236641221373" y="72.535211267605632"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>

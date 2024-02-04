@@ -7,6 +7,12 @@
 
 import UIKit
 
+enum CellType {
+    case audio
+    case meaning
+    case last
+}
+
 class SearchResultViewController: UIViewController {
     
     @IBOutlet weak var resultTableView: UITableView!
@@ -24,7 +30,13 @@ class SearchResultViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureNavigation()
         setupTableView()
+    }
+    
+    private func configureNavigation(){
+        navigationController?.navigationBar.isHidden = true
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
     
     private func setupTableView() {
@@ -34,24 +46,43 @@ class SearchResultViewController: UIViewController {
         resultTableView.separatorStyle = .none
         resultTableView.register(AudioTableViewCell.nib(), forCellReuseIdentifier: AudioTableViewCell.identifier)
         resultTableView.register(MeaningTableViewCell.nib(), forCellReuseIdentifier: MeaningTableViewCell.identifier)
+        resultTableView.register(BackTableViewCell.nib(), forCellReuseIdentifier: BackTableViewCell.identifier)
     }
-
+    
 }
 
 extension SearchResultViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (viewModel.myWord.meanings?[0].definitions?.count ?? 0) + 1
+        return viewModel.getNumberOfRows
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
+        let cellType: CellType
+        
+        switch indexPath.row {
+        case 0:
+            cellType = .audio
+        case tableView.numberOfRows(inSection: 0) - 1:
+            cellType = .last
+        default:
+            cellType = .meaning
+        }
+        
+        switch cellType {
+        case .audio:
             let cell = tableView.dequeueReusableCell(withIdentifier: AudioTableViewCell.identifier, for: indexPath) as? AudioTableViewCell
-            cell?.setupCell(myWord: viewModel.myWord)
+            cell?.setupCell(myWord: viewModel.getMyWord)
             return cell ?? UITableViewCell()
-        } else {
+            
+        case .meaning:
             let cell = tableView.dequeueReusableCell(withIdentifier: MeaningTableViewCell.identifier, for: indexPath) as? MeaningTableViewCell
-            cell?.setupCell(myWord: viewModel.myWord, index: indexPath.row - 1)
+            cell?.setupCell(myWord: viewModel.getMyWord, index: indexPath.row - 1)
+            return cell ?? UITableViewCell()
+            
+        case .last:
+            let cell = tableView.dequeueReusableCell(withIdentifier: BackTableViewCell.identifier, for: indexPath) as? BackTableViewCell
+            cell?.setupDelegate(delegate: self)
             return cell ?? UITableViewCell()
         }
     }
@@ -59,9 +90,17 @@ extension SearchResultViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
             return 140
+        } else if indexPath.row == tableView.numberOfRows(inSection: 0) - 1 {
+            return 300
         } else {
             return 300
         }
     }
     
+}
+
+extension SearchResultViewController: BackTableViewCellDelegate {
+    func tappedNewSearchButton() {
+        navigationController?.popViewController(animated: true)
+    }
 }

@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="J5b-q7-SxL">
-                                <rect key="frame" x="16" y="75" width="361" height="727"/>
+                                <rect key="frame" x="0.0" y="75" width="393" height="727"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -25,8 +25,8 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="J5b-q7-SxL" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="16" id="1gn-JR-RVb"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="J5b-q7-SxL" secondAttribute="trailing" constant="16" id="KpB-Np-8YY"/>
-                            <constraint firstItem="J5b-q7-SxL" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="ZbK-wI-qoc"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="J5b-q7-SxL" secondAttribute="trailing" id="KpB-Np-8YY"/>
+                            <constraint firstItem="J5b-q7-SxL" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="ZbK-wI-qoc"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="J5b-q7-SxL" secondAttribute="bottom" constant="16" id="hcW-LG-xg0"/>
                         </constraints>
                     </view>

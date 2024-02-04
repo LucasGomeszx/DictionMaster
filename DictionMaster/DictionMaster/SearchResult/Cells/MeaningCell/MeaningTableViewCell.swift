@@ -10,7 +10,7 @@ import UIKit
 class MeaningTableViewCell: UITableViewCell {
     
     @IBOutlet weak var meaningLabel: UILabel!
-    @IBOutlet weak var exempleTableView: UITableView!
+    @IBOutlet weak var exampleLabel: UILabel!
     
     static let identifier: String = String(describing: MeaningTableViewCell.self)
     
@@ -27,11 +27,17 @@ class MeaningTableViewCell: UITableViewCell {
         meaningLabel.font = .systemFont(ofSize: 16, weight: .bold)
         meaningLabel.font?.fontDescriptor.withDesign(.rounded)
         meaningLabel.numberOfLines = 0
-
+        meaningLabel.textColor = UIColor.countryCollor
+        
+        exampleLabel.font = .systemFont(ofSize: 16, weight: .regular)
+        exampleLabel.font?.fontDescriptor.withDesign(.rounded)
+        exampleLabel.numberOfLines = 0
+        exampleLabel.textColor = UIColor.countryCollor
     }
     
     public func setupCell(myWord: WordModel, index: Int) {
         meaningLabel.text = myWord.meanings?[0].definitions?[index].definition
+        exampleLabel.text = myWord.meanings?[0].definitions?[index].example ?? "not example"
     }
     
 }

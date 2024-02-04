@@ -26,6 +26,8 @@
 		5593F7712B6FC65500AC3326 /* AudioTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5593F76F2B6FC65500AC3326 /* AudioTableViewCell.xib */; };
 		5593F7752B6FD26400AC3326 /* MeaningTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5593F7732B6FD26400AC3326 /* MeaningTableViewCell.swift */; };
 		5593F7762B6FD26400AC3326 /* MeaningTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5593F7742B6FD26400AC3326 /* MeaningTableViewCell.xib */; };
+		5593F77A2B6FE38600AC3326 /* BackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5593F7782B6FE38600AC3326 /* BackTableViewCell.swift */; };
+		5593F77B2B6FE38600AC3326 /* BackTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5593F7792B6FE38600AC3326 /* BackTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,8 @@
 		5593F76F2B6FC65500AC3326 /* AudioTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AudioTableViewCell.xib; sourceTree = "<group>"; };
 		5593F7732B6FD26400AC3326 /* MeaningTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeaningTableViewCell.swift; sourceTree = "<group>"; };
 		5593F7742B6FD26400AC3326 /* MeaningTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MeaningTableViewCell.xib; sourceTree = "<group>"; };
+		5593F7782B6FE38600AC3326 /* BackTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackTableViewCell.swift; sourceTree = "<group>"; };
+		5593F7792B6FE38600AC3326 /* BackTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +216,7 @@
 			children = (
 				5593F76D2B6FC62200AC3326 /* AudioCell */,
 				5593F7722B6FD23700AC3326 /* MeaningCell */,
+				5593F7772B6FE35700AC3326 /* BackCell */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -232,6 +237,15 @@
 				5593F7742B6FD26400AC3326 /* MeaningTableViewCell.xib */,
 			);
 			path = MeaningCell;
+			sourceTree = "<group>";
+		};
+		5593F7772B6FE35700AC3326 /* BackCell */ = {
+			isa = PBXGroup;
+			children = (
+				5593F7782B6FE38600AC3326 /* BackTableViewCell.swift */,
+				5593F7792B6FE38600AC3326 /* BackTableViewCell.xib */,
+			);
+			path = BackCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,6 +306,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5593F77B2B6FE38600AC3326 /* BackTableViewCell.xib in Resources */,
 				55131C602B6E79ED002B8F59 /* LaunchScreen.storyboard in Resources */,
 				5593F7762B6FD26400AC3326 /* MeaningTableViewCell.xib in Resources */,
 				55131C5D2B6E79ED002B8F59 /* Assets.xcassets in Resources */,
@@ -314,6 +329,7 @@
 				55131C812B6EB2FF002B8F59 /* WordModel.swift in Sources */,
 				55131C8C2B6EF656002B8F59 /* SearchResultViewController.swift in Sources */,
 				55131C712B6EADAE002B8F59 /* SearchViewModel.swift in Sources */,
+				5593F77A2B6FE38600AC3326 /* BackTableViewCell.swift in Sources */,
 				55131C582B6E79EC002B8F59 /* ViewController.swift in Sources */,
 				55131C542B6E79EC002B8F59 /* AppDelegate.swift in Sources */,
 				55131C562B6E79EC002B8F59 /* SceneDelegate.swift in Sources */,
