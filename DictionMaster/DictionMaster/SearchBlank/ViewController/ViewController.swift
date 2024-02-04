@@ -20,6 +20,7 @@ class SearchBlank: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
+        viewModel.setViewModelDelegate(delegate: self)
     }
     
     private func configureView() {
@@ -66,10 +67,23 @@ class SearchBlank: UIViewController {
 }
 
 extension SearchBlank: UITextFieldDelegate {
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+}
+
+extension SearchBlank: SearchViewModelDelegate {
+    
+    func didFetchData() {
+        let vc: SearchResultViewController? = UIStoryboard(name: "SearchResultView", bundle: nil).instantiateViewController(identifier: "SearchResultView") { coder -> SearchResultViewController? in
+            return SearchResultViewController(coder: coder, myWord: self.viewModel.myWord ?? WordModel())
+        }
+        navigationController?.pushViewController(vc ?? UIViewController(), animated: true)
+    }
+    
+    func didFetchDataError() {
+        
     }
     
 }

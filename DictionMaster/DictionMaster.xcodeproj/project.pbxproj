@@ -19,6 +19,9 @@
 		55131C7C2B6EAF65002B8F59 /* NetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55131C7B2B6EAF65002B8F59 /* NetworkHandler.swift */; };
 		55131C7E2B6EB00C002B8F59 /* ServiceManeger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55131C7D2B6EB00C002B8F59 /* ServiceManeger.swift */; };
 		55131C812B6EB2FF002B8F59 /* WordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55131C802B6EB2FF002B8F59 /* WordModel.swift */; };
+		55131C8C2B6EF656002B8F59 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55131C8A2B6EF656002B8F59 /* SearchResultViewController.swift */; };
+		55131C8F2B6F058F002B8F59 /* SearchResultView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55131C8E2B6F058F002B8F59 /* SearchResultView.storyboard */; };
+		55131C912B6F2F84002B8F59 /* SearchResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55131C902B6F2F84002B8F59 /* SearchResultViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +39,9 @@
 		55131C7B2B6EAF65002B8F59 /* NetworkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHandler.swift; sourceTree = "<group>"; };
 		55131C7D2B6EB00C002B8F59 /* ServiceManeger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManeger.swift; sourceTree = "<group>"; };
 		55131C802B6EB2FF002B8F59 /* WordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordModel.swift; sourceTree = "<group>"; };
+		55131C8A2B6EF656002B8F59 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
+		55131C8E2B6F058F002B8F59 /* SearchResultView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchResultView.storyboard; sourceTree = "<group>"; };
+		55131C902B6F2F84002B8F59 /* SearchResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +80,7 @@
 				55131C6B2B6E85CA002B8F59 /* System */,
 				55131C6A2B6E85BF002B8F59 /* Splash */,
 				55131C672B6E856D002B8F59 /* SearchBlank */,
+				55131C862B6EF5F5002B8F59 /* SearchResult */,
 				55131C612B6E79ED002B8F59 /* Info.plist */,
 			);
 			path = DictionMaster;
@@ -157,6 +164,40 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		55131C862B6EF5F5002B8F59 /* SearchResult */ = {
+			isa = PBXGroup;
+			children = (
+				55131C892B6EF63C002B8F59 /* ViewModel */,
+				55131C882B6EF636002B8F59 /* ViewController */,
+				55131C872B6EF631002B8F59 /* View */,
+			);
+			path = SearchResult;
+			sourceTree = "<group>";
+		};
+		55131C872B6EF631002B8F59 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				55131C8E2B6F058F002B8F59 /* SearchResultView.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		55131C882B6EF636002B8F59 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				55131C8A2B6EF656002B8F59 /* SearchResultViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		55131C892B6EF63C002B8F59 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				55131C902B6F2F84002B8F59 /* SearchResultViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -217,6 +258,7 @@
 			files = (
 				55131C602B6E79ED002B8F59 /* LaunchScreen.storyboard in Resources */,
 				55131C5D2B6E79ED002B8F59 /* Assets.xcassets in Resources */,
+				55131C8F2B6F058F002B8F59 /* SearchResultView.storyboard in Resources */,
 				55131C5B2B6E79EC002B8F59 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -229,7 +271,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				55131C6E2B6E8BA2002B8F59 /* UICollor+Extension.swift in Sources */,
+				55131C912B6F2F84002B8F59 /* SearchResultViewModel.swift in Sources */,
 				55131C812B6EB2FF002B8F59 /* WordModel.swift in Sources */,
+				55131C8C2B6EF656002B8F59 /* SearchResultViewController.swift in Sources */,
 				55131C712B6EADAE002B8F59 /* SearchViewModel.swift in Sources */,
 				55131C582B6E79EC002B8F59 /* ViewController.swift in Sources */,
 				55131C542B6E79EC002B8F59 /* AppDelegate.swift in Sources */,
