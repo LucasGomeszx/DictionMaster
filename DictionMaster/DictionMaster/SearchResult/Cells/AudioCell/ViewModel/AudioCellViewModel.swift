@@ -28,6 +28,14 @@ class AudioCellViewModel {
         myWord.phonetics?[0].audio ?? ""
     }
     
+    public var getWordText: String {
+        self.myWord.word?.capitalized ?? ""
+    }
+    
+    public var getWordPhonetic: String {
+        self.myWord.phonetic ?? ""
+    }
+    
     public func fetchAudio() {
         ServiceManeger.shered.dowloadAudio(audioUrl: getAudioUrl) { (result: Result<Data, Error>) in
             switch result {

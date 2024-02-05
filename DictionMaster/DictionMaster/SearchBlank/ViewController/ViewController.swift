@@ -80,6 +80,7 @@ extension SearchBlank: SearchViewModelDelegate {
             return SearchResultViewController(coder: coder, myWord: self.viewModel.myWord ?? WordModel())
         }
         navigationController?.pushViewController(vc ?? UIViewController(), animated: true)
+        searchTextField.text = ""
     }
     
     func didFetchDataError() {

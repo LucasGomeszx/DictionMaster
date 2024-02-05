@@ -20,7 +20,8 @@ class BackTableViewCell: UITableViewCell {
     
     static let identifier: String = String(describing: BackTableViewCell.self)
     
-    var delegate: BackTableViewCellDelegate?
+    private var viewModel: BackCellViewModel?
+    private var delegate: BackTableViewCellDelegate?
     
     static func nib() -> UINib {
         return UINib(nibName: identifier, bundle: nil)
@@ -41,18 +42,21 @@ class BackTableViewCell: UITableViewCell {
         newSearchLabel.font = .systemFont(ofSize: 16, weight: .regular)
         newSearchLabel.font.fontDescriptor.withDesign(.rounded)
         newSearchLabel.textColor = UIColor.countryCollor
+        newSearchLabel.text = "Try another search now!"
         
         newSearchButton.backgroundColor = UIColor.searchButton
         newSearchButton.clipsToBounds = true
         newSearchButton.layer.cornerRadius = 14
-        newSearchButton.setTitle("SEARCH", for: .normal)
+        newSearchButton.setTitle("NEW SEARCH", for: .normal)
         newSearchButton.titleLabel?.font = .systemFont(ofSize: 18, weight: .bold)
         newSearchButton.titleLabel?.font.fontDescriptor.withDesign(.rounded)
         newSearchButton.setTitleColor(.white, for: .normal)
     }
     
-    public func setupDelegate(delegate: BackTableViewCellDelegate) {
+    public func setupDelegate(myWord: WordModel,delegate: BackTableViewCellDelegate) {
+        self.viewModel = BackCellViewModel(mtWord: myWord)
         self.delegate = delegate
+        wordLabel.text = "That's it for \"\(viewModel?.getWord ?? "")\""
     }
     
     @IBAction func newSearchButton(_ sender: Any) {

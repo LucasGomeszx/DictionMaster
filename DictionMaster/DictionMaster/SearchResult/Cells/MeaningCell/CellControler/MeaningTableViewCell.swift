@@ -13,6 +13,7 @@ class MeaningTableViewCell: UITableViewCell {
     @IBOutlet weak var exampleLabel: UILabel!
     
     static let identifier: String = String(describing: MeaningTableViewCell.self)
+    private var viewModel: MeaningTableViewModel?
     
     static func nib() -> UINib {
         return UINib(nibName: identifier, bundle: nil)
@@ -36,8 +37,9 @@ class MeaningTableViewCell: UITableViewCell {
     }
     
     public func setupCell(myWord: WordModel, index: Int) {
-        meaningLabel.text = myWord.meanings?[0].definitions?[index].definition
-        exampleLabel.text = myWord.meanings?[0].definitions?[index].example ?? "not example"
+        viewModel = MeaningTableViewModel(myWord: myWord)
+        meaningLabel.text = viewModel?.getMeaningText(index: index)
+        exampleLabel.text = viewModel?.getExampleText(index: index)
     }
     
 }

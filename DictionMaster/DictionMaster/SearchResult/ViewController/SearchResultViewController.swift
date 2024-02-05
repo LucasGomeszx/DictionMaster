@@ -82,18 +82,18 @@ extension SearchResultViewController: UITableViewDelegate, UITableViewDataSource
             
         case .last:
             let cell = tableView.dequeueReusableCell(withIdentifier: BackTableViewCell.identifier, for: indexPath) as? BackTableViewCell
-            cell?.setupDelegate(delegate: self)
+            cell?.setupDelegate(myWord: viewModel.getMyWord,delegate: self)
             return cell ?? UITableViewCell()
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
-            return 140
+            return viewModel.getAudioCellSize
         } else if indexPath.row == tableView.numberOfRows(inSection: 0) - 1 {
-            return 300
+            return viewModel.getBackCellSize
         } else {
-            return 300
+            return viewModel.getCellSize(width: tableView.frame.size.width, index: indexPath.row - 1 )
         }
     }
     

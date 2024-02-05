@@ -25,12 +25,12 @@ class AudioTableViewCell: UITableViewCell {
     static func nib() -> UINib {
         return UINib(nibName: identifier, bundle: nil)
     }
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         setupView()
     }
-
+    
     private func setupView() {
         wordLabel.font = .systemFont(ofSize: 45, weight: .bold)
         wordLabel.font.fontDescriptor.withDesign(.rounded)
@@ -51,17 +51,17 @@ class AudioTableViewCell: UITableViewCell {
         pronunciationLabel.textColor = UIColor.placeholderCollor
     }
     
-    @objc 
+    @objc
     private func tappedSpeakerImage() {
         viewModel?.playDownloadedAudio()
     }
-        
+    
     public func setupCell(myWord: WordModel, delegate: AudioTableViewCellDelegate) {
         self.viewModel = AudioCellViewModel(myWord: myWord, delegate: self)
         self.delegate = delegate
         viewModel?.fetchAudio()
-        wordLabel.text = myWord.word?.capitalized ?? ""
-        pronunciationLabel.text = myWord.phonetic ?? ""
+        wordLabel.text = viewModel?.getWordText
+        pronunciationLabel.text = viewModel?.getWordPhonetic
     }
     
 }
