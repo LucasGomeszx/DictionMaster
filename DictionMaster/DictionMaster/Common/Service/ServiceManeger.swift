@@ -9,7 +9,7 @@ import Foundation
 
 class ServiceManeger {
     
-    let service: Service = Service()
+    private let service: Service = Service()
     static let shered = ServiceManeger()
     
     public func getDictionarySearch(word: String, completion: @escaping (Result<[WordModel], Error>) -> Void) {
@@ -20,6 +20,17 @@ class ServiceManeger {
             switch result {
             case .success(let data):
                 completion(.success(data))
+            case .failure(let failure):
+                completion(.failure(failure))
+            }
+        }
+    }
+    
+    public func dowloadAudio(audioUrl: String, completion: @escaping (Result<Data, Error>) -> Void) {
+        service.downloadAudioFromURL(urlString: audioUrl) { (result: Result<Data, NetworkError>) in
+            switch result {
+            case .success(let success):
+                completion(.success(success))
             case .failure(let failure):
                 completion(.failure(failure))
             }

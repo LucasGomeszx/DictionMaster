@@ -28,6 +28,8 @@
 		5593F7762B6FD26400AC3326 /* MeaningTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5593F7742B6FD26400AC3326 /* MeaningTableViewCell.xib */; };
 		5593F77A2B6FE38600AC3326 /* BackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5593F7782B6FE38600AC3326 /* BackTableViewCell.swift */; };
 		5593F77B2B6FE38600AC3326 /* BackTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5593F7792B6FE38600AC3326 /* BackTableViewCell.xib */; };
+		5593F7802B7011C100AC3326 /* AudioCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5593F77F2B7011C100AC3326 /* AudioCellViewModel.swift */; };
+		5593F7842B702A8400AC3326 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5593F7832B702A8400AC3326 /* Alert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +56,8 @@
 		5593F7742B6FD26400AC3326 /* MeaningTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MeaningTableViewCell.xib; sourceTree = "<group>"; };
 		5593F7782B6FE38600AC3326 /* BackTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackTableViewCell.swift; sourceTree = "<group>"; };
 		5593F7792B6FE38600AC3326 /* BackTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackTableViewCell.xib; sourceTree = "<group>"; };
+		5593F77F2B7011C100AC3326 /* AudioCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioCellViewModel.swift; sourceTree = "<group>"; };
+		5593F7832B702A8400AC3326 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,10 +90,8 @@
 		55131C522B6E79EC002B8F59 /* DictionMaster */ = {
 			isa = PBXGroup;
 			children = (
-				55131C7F2B6EB2F4002B8F59 /* Model */,
-				55131C722B6EAEAF002B8F59 /* Service */,
-				55131C6C2B6E8B8C002B8F59 /* Extensions */,
 				55131C6B2B6E85CA002B8F59 /* System */,
+				5593F7812B702A1000AC3326 /* Common */,
 				55131C6A2B6E85BF002B8F59 /* Splash */,
 				55131C672B6E856D002B8F59 /* SearchBlank */,
 				55131C862B6EF5F5002B8F59 /* SearchResult */,
@@ -224,8 +226,9 @@
 		5593F76D2B6FC62200AC3326 /* AudioCell */ = {
 			isa = PBXGroup;
 			children = (
-				5593F76E2B6FC65500AC3326 /* AudioTableViewCell.swift */,
-				5593F76F2B6FC65500AC3326 /* AudioTableViewCell.xib */,
+				5593F77E2B700FB200AC3326 /* ViewModel */,
+				5593F77D2B700FAB00AC3326 /* ViewController */,
+				5593F77C2B700FA700AC3326 /* View */,
 			);
 			path = AudioCell;
 			sourceTree = "<group>";
@@ -246,6 +249,49 @@
 				5593F7792B6FE38600AC3326 /* BackTableViewCell.xib */,
 			);
 			path = BackCell;
+			sourceTree = "<group>";
+		};
+		5593F77C2B700FA700AC3326 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5593F76F2B6FC65500AC3326 /* AudioTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5593F77D2B700FAB00AC3326 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5593F76E2B6FC65500AC3326 /* AudioTableViewCell.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		5593F77E2B700FB200AC3326 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5593F77F2B7011C100AC3326 /* AudioCellViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		5593F7812B702A1000AC3326 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				5593F7822B702A7B00AC3326 /* Alert */,
+				55131C6C2B6E8B8C002B8F59 /* Extensions */,
+				55131C722B6EAEAF002B8F59 /* Service */,
+				55131C7F2B6EB2F4002B8F59 /* Model */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		5593F7822B702A7B00AC3326 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				5593F7832B702A8400AC3326 /* Alert.swift */,
+			);
+			path = Alert;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -324,6 +370,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5593F7752B6FD26400AC3326 /* MeaningTableViewCell.swift in Sources */,
+				5593F7802B7011C100AC3326 /* AudioCellViewModel.swift in Sources */,
 				55131C6E2B6E8BA2002B8F59 /* UICollor+Extension.swift in Sources */,
 				55131C912B6F2F84002B8F59 /* SearchResultViewModel.swift in Sources */,
 				55131C812B6EB2FF002B8F59 /* WordModel.swift in Sources */,
@@ -336,6 +383,7 @@
 				5593F7702B6FC65500AC3326 /* AudioTableViewCell.swift in Sources */,
 				55131C7A2B6EAF1F002B8F59 /* Service.swift in Sources */,
 				55131C7C2B6EAF65002B8F59 /* NetworkHandler.swift in Sources */,
+				5593F7842B702A8400AC3326 /* Alert.swift in Sources */,
 				55131C7E2B6EB00C002B8F59 /* ServiceManeger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

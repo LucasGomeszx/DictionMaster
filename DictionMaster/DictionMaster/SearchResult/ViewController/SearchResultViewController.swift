@@ -72,7 +72,7 @@ extension SearchResultViewController: UITableViewDelegate, UITableViewDataSource
         switch cellType {
         case .audio:
             let cell = tableView.dequeueReusableCell(withIdentifier: AudioTableViewCell.identifier, for: indexPath) as? AudioTableViewCell
-            cell?.setupCell(myWord: viewModel.getMyWord)
+            cell?.setupCell(myWord: viewModel.getMyWord, delegate: self)
             return cell ?? UITableViewCell()
             
         case .meaning:
@@ -102,5 +102,11 @@ extension SearchResultViewController: UITableViewDelegate, UITableViewDataSource
 extension SearchResultViewController: BackTableViewCellDelegate {
     func tappedNewSearchButton() {
         navigationController?.popViewController(animated: true)
+    }
+}
+
+extension SearchResultViewController: AudioTableViewCellDelegate {
+    func showErrorAlert(error: String) {
+        Alert.showAlert(on: self, withTitle: "Error", message: error, actions: nil)
     }
 }

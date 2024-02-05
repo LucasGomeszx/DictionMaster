@@ -55,4 +55,20 @@ class Service: ServiceProtocol {
         session.resume()
     }
     
+    func downloadAudioFromURL(urlString: String, completion: @escaping (Result<Data, NetworkError>) -> Void) {
+        guard let url = URL(string: urlString) else {
+            completion(.failure(.invalidURL(url: urlString)))
+            return
+        }
+        let urlSession = URLSession.shared
+        let task = urlSession.dataTask(with: url) { (data, response, error) in
+            guard let data = data, error == nil else {
+                completion(.failure(.invalidResponse))
+                return
+            }
+            completion(.success(data))
+        }
+        task.resume()
+    }
+    
 }

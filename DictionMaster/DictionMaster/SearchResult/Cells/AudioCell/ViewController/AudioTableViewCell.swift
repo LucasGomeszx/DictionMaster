@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol AudioTableViewCellDelegate: AnyObject {
+    func showErrorAlert(error: String)
+}
+
 class AudioTableViewCell: UITableViewCell {
     
     @IBOutlet weak var wordLabel: UILabel!
@@ -15,6 +19,8 @@ class AudioTableViewCell: UITableViewCell {
     @IBOutlet weak var pronunciationLabel: UILabel!
     
     static let identifier: String = String(describing: AudioTableViewCell.self)
+    private var viewModel: AudioCellViewModel?
+    private var delegate:AudioTableViewCellDelegate?
     
     static func nib() -> UINib {
         return UINib(nibName: identifier, bundle: nil)
@@ -33,6 +39,9 @@ class AudioTableViewCell: UITableViewCell {
         speakerContainer.layer.cornerRadius = speakerContainer.frame.size.width / 2
         speakerContainer.layer.masksToBounds = true
         speakerContainer.backgroundColor = UIColor.searchButton
+        speakerContainer.isUserInteractionEnabled = true
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(tappedSpeakerImage))
+        speakerContainer.addGestureRecognizer(gesture)
         
         speakerImage.contentMode = .scaleAspectFill
         speakerImage.clipsToBounds = true
@@ -42,9 +51,23 @@ class AudioTableViewCell: UITableViewCell {
         pronunciationLabel.textColor = UIColor.placeholderCollor
     }
     
-    public func setupCell(myWord: WordModel) {
+    @objc 
+    private func tappedSpeakerImage() {
+        viewModel?.playDownloadedAudio()
+    }
+        
+    public func setupCell(myWord: WordModel, delegate: AudioTableViewCellDelegate) {
+        self.viewModel = AudioCellViewModel(myWord: myWord, delegate: self)
+        self.delegate = delegate
+        viewModel?.fetchAudio()
         wordLabel.text = myWord.word?.capitalized ?? ""
         pronunciationLabel.text = myWord.phonetic ?? ""
     }
     
+}
+
+extension AudioTableViewCell:AudioCellViewModelDelegate {
+    func showErrorAlert(error: String) {
+        self.delegate?.showErrorAlert(error: error)
+    }
 }
