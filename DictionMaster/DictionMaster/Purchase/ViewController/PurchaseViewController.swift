@@ -39,8 +39,7 @@ class PurchaseViewController: UIViewController {
         let gesture = UITapGestureRecognizer(target: self, action: #selector(tappedSubscribeButton))
         buttonContainerView.addGestureRecognizer(gesture)
         
-        buttonLabel.text = "SUBSCRIBE"
-        buttonLabel.setButtonLabelStyle()
+        buttonLabel.setButtonLabelStyle(text: "SUBSCRIBE")
     }
     
     private func configureNavigation(){

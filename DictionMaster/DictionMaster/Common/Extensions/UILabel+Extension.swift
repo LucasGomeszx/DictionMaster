@@ -9,10 +9,24 @@ import UIKit
 
 extension UILabel {
     
-    func setButtonLabelStyle() {
+    func setPrimaryCollorRegular(size: CGFloat, text: String) {
+        self.textColor = UIColor.countryCollor
+        self.text = text
+        self.font = .systemFont(ofSize: size, weight: .regular)
+        self.font.fontDescriptor.withDesign(.rounded)
+    }
+    
+    func setPrimaryCollorBold(size: CGFloat, text: String) {
+        self.textColor = UIColor.textFieldCollor
+        self.font = .systemFont(ofSize: 32, weight: .bold)
+        self.font?.fontDescriptor.withDesign(.rounded)
+    }
+    
+    func setButtonLabelStyle(text: String) {
         self.font = .systemFont(ofSize: 18, weight: .bold)
         self.font.fontDescriptor.withDesign(.rounded)
         self.textColor = UIColor.white
+        self.text = text
     }
     
     func setupSubscribeLabel() {

@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Search Blank-->
+        <!--Search Blank View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="SearchBlank" customModule="DictionMaster" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="SearchBlankViewController" customModule="DictionMaster" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -53,27 +53,33 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F8d-oA-nmJ">
-                                <rect key="frame" x="16" y="734" width="361" height="64"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sRW-92-Lff">
+                                <rect key="frame" x="16" y="736" width="361" height="64"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u0E-Xz-lb2">
+                                        <rect key="frame" x="159.66666666666666" y="21.666666666666629" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="gYC-tR-TWf"/>
+                                    <constraint firstItem="u0E-Xz-lb2" firstAttribute="centerY" secondItem="sRW-92-Lff" secondAttribute="centerY" id="QSk-n0-2Sd"/>
+                                    <constraint firstAttribute="height" constant="64" id="oYR-Au-w0m"/>
+                                    <constraint firstItem="u0E-Xz-lb2" firstAttribute="centerX" secondItem="sRW-92-Lff" secondAttribute="centerX" id="tQa-RS-8ki"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                <connections>
-                                    <action selector="searchButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pYG-VI-Qhh"/>
-                                </connections>
-                            </button>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="F8d-oA-nmJ" secondAttribute="bottom" constant="20" id="9wj-TO-sOW"/>
                             <constraint firstItem="45R-UV-Hzr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JMo-Jb-o50"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="F8d-oA-nmJ" secondAttribute="trailing" constant="16" id="Jb9-XG-Wc5"/>
+                            <constraint firstItem="sRW-92-Lff" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="JhW-j1-Zv3"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="sRW-92-Lff" secondAttribute="bottom" constant="18" id="aEs-ub-zre"/>
                             <constraint firstItem="45R-UV-Hzr" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="75" id="aaH-rv-cgS"/>
-                            <constraint firstItem="F8d-oA-nmJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="j1L-8d-5CH"/>
                             <constraint firstItem="LNv-wc-VyE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vgB-tI-PDm"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sRW-92-Lff" secondAttribute="trailing" constant="16" id="xQy-5R-LpD"/>
                             <constraint firstItem="LNv-wc-VyE" firstAttribute="top" secondItem="45R-UV-Hzr" secondAttribute="bottom" constant="173" id="zVR-M9-oPj"/>
                         </constraints>
                     </view>
@@ -82,7 +88,8 @@
                         <outlet property="capsuleView" destination="45R-UV-Hzr" id="gAF-Cf-MdR"/>
                         <outlet property="countryImage" destination="aOD-OH-UrG" id="yy3-bL-9r2"/>
                         <outlet property="countryLabel" destination="hPy-rI-Zve" id="1Ei-0P-SIf"/>
-                        <outlet property="searchButton" destination="F8d-oA-nmJ" id="RQb-BL-y5z"/>
+                        <outlet property="searchContainer" destination="sRW-92-Lff" id="mwC-AA-ADe"/>
+                        <outlet property="searchContainerLabel" destination="u0E-Xz-lb2" id="d6f-Vh-YhA"/>
                         <outlet property="searchTextField" destination="LNv-wc-VyE" id="au1-zt-Gzk"/>
                     </connections>
                 </viewController>
@@ -112,10 +119,13 @@
     <resources>
         <image name="en" width="26" height="27"/>
         <systemColor name="separatorColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

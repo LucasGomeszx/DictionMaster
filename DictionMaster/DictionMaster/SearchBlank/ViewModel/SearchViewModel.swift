@@ -9,13 +9,13 @@ import Foundation
 
 protocol SearchViewModelDelegate: AnyObject {
     func didFetchData()
-    func didFetchDataError()
+    func didFetchDataError(error: String)
 }
 
 class SearchViewModel {
     
-    var delegate: SearchViewModelDelegate?
-    var myWord: WordModel?
+    private var delegate: SearchViewModelDelegate?
+    private var myWord: WordModel?
     
     public func setViewModelDelegate(delegate: SearchViewModelDelegate) {
         self.delegate = delegate
@@ -25,13 +25,16 @@ class SearchViewModel {
         ServiceManeger.shered.getDictionarySearch(word: word) { (result: Result<[WordModel], Error>) in
             switch result {
             case .success(let success):
-                print(success)
                 self.myWord = success[0]
                 self.delegate?.didFetchData()
             case .failure(let failure):
-                print(failure)
+                self.delegate?.didFetchDataError(error: failure.localizedDescription)
             }
         }
+    }
+    
+    public var getmyWord: WordModel {
+        myWord ?? WordModel()
     }
     
 }
