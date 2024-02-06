@@ -27,17 +27,18 @@ extension NetworkError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .invalidURL(let url):
-            return "URL inválida: \(url)"
+            return "Invalid URL: \(url)"
         case .networkError(let error):
-            return "Erro de rede: \(error.localizedDescription)"
+            return "Network error: \(error.localizedDescription)"
         case .invalidResponse:
-            return "Resposta inválida"
+            return "Invalid response"
         case .invalidStatusCode(let statusCode):
-            return "Status code inválido: \(statusCode)"
+            return "Invalid status code: \(statusCode)"
         case .noData:
-            return "Dados não encontrados"
+            return "No data found"
         case .decodeError(let error):
-            return "Erro de decodificação: \(error.localizedDescription)"
+            return "Decoding error: \(error.localizedDescription)"
         }
     }
+
 }
