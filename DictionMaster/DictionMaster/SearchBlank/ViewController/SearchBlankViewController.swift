@@ -12,7 +12,8 @@ enum SearchBlankString: String {
     case countryLabelText = "ENGLISH"
     case searchContainerLabel = "SEARCH"
     case placeholderText = "Type a word..."
-    case SearchResultView = "SearchResultView"
+    case searchResultView = "SearchResultView"
+    case purchaseView = "PurchaseView"
 }
 
 class SearchBlankViewController: UIViewController {
@@ -66,11 +67,7 @@ class SearchBlankViewController: UIViewController {
 
     @objc
     private func tappedSearchButton() {
-        viewModel.fetchData(word: searchTextField.text ?? "")
-//        let vc: PurchaseViewController? = UIStoryboard(name: "PurchaseView", bundle: nil).instantiateViewController(identifier: "PurchaseView") { coder -> PurchaseViewController? in
-//            return PurchaseViewController(coder: coder)
-//        }
-//        navigationController?.pushViewController(vc ?? UIViewController(), animated: true)
+        viewModel.fetchData(word: searchTextField.text?.lowercased() ?? "")
     }
     
 }
@@ -85,15 +82,23 @@ extension SearchBlankViewController: UITextFieldDelegate {
 
 //MARK: -SearchViewModelDelegate
 extension SearchBlankViewController: SearchViewModelDelegate {
-    func didFetchData() {
-        let vc: SearchResultViewController? = UIStoryboard(name: SearchBlankString.SearchResultView.rawValue, bundle: nil).instantiateViewController(identifier: SearchBlankString.SearchResultView.rawValue) { coder -> SearchResultViewController? in
-            return SearchResultViewController(coder: coder, myWord: self.viewModel.getmyWord)
+    func didFetchDataSuccess() {
+        let vc: SearchResultViewController? = UIStoryboard(name: SearchBlankString.searchResultView.rawValue, bundle: nil).instantiateViewController(identifier: SearchBlankString.searchResultView.rawValue) { coder -> SearchResultViewController? in
+            return SearchResultViewController(coder: coder, myWord: self.viewModel.getMyWord)
         }
         navigationController?.pushViewController(vc ?? UIViewController(), animated: true)
         searchTextField.text = ""
     }
     
-    func didFetchDataError(error: String) {
+    func showPurchaseScreen() {
+        guard let purchaseVC = UIStoryboard(name: SearchBlankString.purchaseView.rawValue, bundle: nil).instantiateViewController(withIdentifier: SearchBlankString.purchaseView.rawValue) as? PurchaseViewController else {
+            return
+        }
+        purchaseVC.modalPresentationStyle = .fullScreen
+        present(purchaseVC, animated: true, completion: nil)
+    }
+    
+    func didFetchDataFailure(error: String) {
         Alert.showAlert(on: self, withTitle: SearchBlankString.alertErrorTitle.rawValue, message: error, actions: nil)
     }
 }

@@ -22,6 +22,8 @@
 		55131C8C2B6EF656002B8F59 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55131C8A2B6EF656002B8F59 /* SearchResultViewController.swift */; };
 		55131C8F2B6F058F002B8F59 /* SearchResultView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55131C8E2B6F058F002B8F59 /* SearchResultView.storyboard */; };
 		55131C912B6F2F84002B8F59 /* SearchResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55131C902B6F2F84002B8F59 /* SearchResultViewModel.swift */; };
+		558903612B72DFAE0072EA98 /* DailySearchCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558903602B72DFAE0072EA98 /* DailySearchCache.swift */; };
+		558903642B72DFD50072EA98 /* GenericCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558903632B72DFD50072EA98 /* GenericCache.swift */; };
 		5593F7702B6FC65500AC3326 /* AudioTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5593F76E2B6FC65500AC3326 /* AudioTableViewCell.swift */; };
 		5593F7712B6FC65500AC3326 /* AudioTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5593F76F2B6FC65500AC3326 /* AudioTableViewCell.xib */; };
 		5593F7752B6FD26400AC3326 /* MeaningTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5593F7732B6FD26400AC3326 /* MeaningTableViewCell.swift */; };
@@ -57,6 +59,8 @@
 		55131C8A2B6EF656002B8F59 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		55131C8E2B6F058F002B8F59 /* SearchResultView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchResultView.storyboard; sourceTree = "<group>"; };
 		55131C902B6F2F84002B8F59 /* SearchResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewModel.swift; sourceTree = "<group>"; };
+		558903602B72DFAE0072EA98 /* DailySearchCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailySearchCache.swift; sourceTree = "<group>"; };
+		558903632B72DFD50072EA98 /* GenericCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericCache.swift; sourceTree = "<group>"; };
 		5593F76E2B6FC65500AC3326 /* AudioTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioTableViewCell.swift; sourceTree = "<group>"; };
 		5593F76F2B6FC65500AC3326 /* AudioTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AudioTableViewCell.xib; sourceTree = "<group>"; };
 		5593F7732B6FD26400AC3326 /* MeaningTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeaningTableViewCell.swift; sourceTree = "<group>"; };
@@ -231,6 +235,15 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		5589035F2B72DF940072EA98 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				558903602B72DFAE0072EA98 /* DailySearchCache.swift */,
+				558903632B72DFD50072EA98 /* GenericCache.swift */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
 		5593F76C2B6FC61800AC3326 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -298,6 +311,7 @@
 		5593F7812B702A1000AC3326 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				5589035F2B72DF940072EA98 /* Cache */,
 				5593F7822B702A7B00AC3326 /* Alert */,
 				55131C6C2B6E8B8C002B8F59 /* Extensions */,
 				55131C722B6EAEAF002B8F59 /* Service */,
@@ -481,6 +495,7 @@
 				55131C812B6EB2FF002B8F59 /* WordModel.swift in Sources */,
 				55131C8C2B6EF656002B8F59 /* SearchResultViewController.swift in Sources */,
 				55131C712B6EADAE002B8F59 /* SearchViewModel.swift in Sources */,
+				558903612B72DFAE0072EA98 /* DailySearchCache.swift in Sources */,
 				5593F77A2B6FE38600AC3326 /* BackTableViewCell.swift in Sources */,
 				5593F7902B718F3B00AC3326 /* BackCellViewModel.swift in Sources */,
 				55131C582B6E79EC002B8F59 /* SearchBlankViewController.swift in Sources */,
@@ -492,6 +507,7 @@
 				5593F79A2B71AF5700AC3326 /* UILabel+Extension.swift in Sources */,
 				55131C7C2B6EAF65002B8F59 /* NetworkHandler.swift in Sources */,
 				5593F7842B702A8400AC3326 /* Alert.swift in Sources */,
+				558903642B72DFD50072EA98 /* GenericCache.swift in Sources */,
 				55131C7E2B6EB00C002B8F59 /* ServiceManeger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

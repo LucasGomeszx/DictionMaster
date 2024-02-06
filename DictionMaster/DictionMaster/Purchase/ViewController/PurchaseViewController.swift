@@ -49,7 +49,7 @@ class PurchaseViewController: UIViewController {
     
     @objc
     private func tappedSubscribeButton() {
-        navigationController?.popViewController(animated: true)
+        dismiss(animated: true)
     }
 
 }
