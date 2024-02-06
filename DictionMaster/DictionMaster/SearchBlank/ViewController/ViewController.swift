@@ -61,7 +61,11 @@ class SearchBlank: UIViewController {
     }
 
     @IBAction func searchButton(_ sender: Any) {
-        viewModel.fetchData(word: searchTextField.text ?? "")
+//        viewModel.fetchData(word: searchTextField.text ?? "")
+        let vc: PurchaseViewController? = UIStoryboard(name: "PurchaseView", bundle: nil).instantiateViewController(identifier: "PurchaseView") { coder -> PurchaseViewController? in
+            return PurchaseViewController(coder: coder)
+        }
+        navigationController?.pushViewController(vc ?? UIViewController(), animated: true)
     }
     
 }
