@@ -27,12 +27,14 @@ class SearchBlankViewController: UIViewController {
     @IBOutlet weak var buttonBottomConstraint: NSLayoutConstraint!
     
     private var viewModel: SearchViewModel = SearchViewModel()
+    private let spinner = UIActivityIndicatorView(style: .large)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         setupNavigation()
         configNotification()
+        hideKeyboardWhenTapped()
         viewModel.setViewModelDelegate(delegate: self)
     }
     
@@ -63,6 +65,8 @@ class SearchBlankViewController: UIViewController {
         searchContainer.setButtonStyle()
         
         searchContainerLabel.setButtonLabelStyle(text: SearchBlankString.searchContainerLabel.rawValue)
+        
+        setupLoadingIndicator()
     }
     
     private func configurePlaceholderStyle() {
@@ -73,10 +77,23 @@ class SearchBlankViewController: UIViewController {
         ]
         searchTextField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
     }
+
+    private func setupLoadingIndicator() {
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(spinner)
+
+        NSLayoutConstraint.activate([
+            spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+    }
     
-    @objc
-    private func tappedSearchButton() {
-        viewModel.fetchData(word: searchTextField.text?.lowercased() ?? "")
+    private func showLoading() {
+        spinner.startAnimating()
+    }
+
+    private func hideLoading() {
+        spinner.stopAnimating()
     }
     
     private func setupNavigation() {
@@ -104,6 +121,12 @@ class SearchBlankViewController: UIViewController {
         }
     }
     
+    @objc
+    private func tappedSearchButton() {
+        showLoading()
+        viewModel.fetchData(word: searchTextField.text?.lowercased() ?? "")
+    }
+    
 }
 
 //MARK: - UITextFieldDelegate
@@ -117,6 +140,7 @@ extension SearchBlankViewController: UITextFieldDelegate {
 //MARK: -SearchViewModelDelegate
 extension SearchBlankViewController: SearchViewModelDelegate {
     func didFetchDataSuccess() {
+        hideLoading()
         let vc: SearchResultViewController? = UIStoryboard(name: SearchBlankString.searchResultView.rawValue, bundle: nil).instantiateViewController(identifier: SearchBlankString.searchResultView.rawValue) { coder -> SearchResultViewController? in
             return SearchResultViewController(coder: coder, myWord: self.viewModel.getMyWord)
         }
@@ -125,6 +149,7 @@ extension SearchBlankViewController: SearchViewModelDelegate {
     }
     
     func showPurchaseScreen() {
+        hideLoading()
         guard let purchaseVC = UIStoryboard(name: SearchBlankString.purchaseView.rawValue, bundle: nil).instantiateViewController(withIdentifier: SearchBlankString.purchaseView.rawValue) as? PurchaseViewController else {
             return
         }
@@ -133,6 +158,7 @@ extension SearchBlankViewController: SearchViewModelDelegate {
     }
     
     func didFetchDataFailure(error: String) {
+        hideLoading()
         Alert.showAlert(on: self, withTitle: SearchBlankString.alertErrorTitle.rawValue, message: error, actions: nil)
     }
 }

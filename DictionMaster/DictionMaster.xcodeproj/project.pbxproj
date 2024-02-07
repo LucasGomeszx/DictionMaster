@@ -22,6 +22,7 @@
 		55131C8C2B6EF656002B8F59 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55131C8A2B6EF656002B8F59 /* SearchResultViewController.swift */; };
 		55131C8F2B6F058F002B8F59 /* SearchResultView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55131C8E2B6F058F002B8F59 /* SearchResultView.storyboard */; };
 		55131C912B6F2F84002B8F59 /* SearchResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55131C902B6F2F84002B8F59 /* SearchResultViewModel.swift */; };
+		558869772B73B81B001858D6 /* UIVIewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558869762B73B81B001858D6 /* UIVIewController+Extension.swift */; };
 		558903612B72DFAE0072EA98 /* DailySearchCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558903602B72DFAE0072EA98 /* DailySearchCache.swift */; };
 		558903642B72DFD50072EA98 /* GenericCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558903632B72DFD50072EA98 /* GenericCache.swift */; };
 		5593F7702B6FC65500AC3326 /* AudioTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5593F76E2B6FC65500AC3326 /* AudioTableViewCell.swift */; };
@@ -59,6 +60,7 @@
 		55131C8A2B6EF656002B8F59 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		55131C8E2B6F058F002B8F59 /* SearchResultView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchResultView.storyboard; sourceTree = "<group>"; };
 		55131C902B6F2F84002B8F59 /* SearchResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewModel.swift; sourceTree = "<group>"; };
+		558869762B73B81B001858D6 /* UIVIewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIewController+Extension.swift"; sourceTree = "<group>"; };
 		558903602B72DFAE0072EA98 /* DailySearchCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailySearchCache.swift; sourceTree = "<group>"; };
 		558903632B72DFD50072EA98 /* GenericCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericCache.swift; sourceTree = "<group>"; };
 		5593F76E2B6FC65500AC3326 /* AudioTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioTableViewCell.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				5593F78A2B707C4300AC3326 /* String+Extension.swift */,
 				5593F7992B71AF5700AC3326 /* UILabel+Extension.swift */,
 				5593F79B2B71C21200AC3326 /* UIVIew+Extension.swift */,
+				558869762B73B81B001858D6 /* UIVIewController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -495,6 +498,7 @@
 				55131C812B6EB2FF002B8F59 /* WordModel.swift in Sources */,
 				55131C8C2B6EF656002B8F59 /* SearchResultViewController.swift in Sources */,
 				55131C712B6EADAE002B8F59 /* SearchViewModel.swift in Sources */,
+				558869772B73B81B001858D6 /* UIVIewController+Extension.swift in Sources */,
 				558903612B72DFAE0072EA98 /* DailySearchCache.swift in Sources */,
 				5593F77A2B6FE38600AC3326 /* BackTableViewCell.swift in Sources */,
 				5593F7902B718F3B00AC3326 /* BackCellViewModel.swift in Sources */,
