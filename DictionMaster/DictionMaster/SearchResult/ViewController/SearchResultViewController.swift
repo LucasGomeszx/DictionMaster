@@ -49,6 +49,7 @@ class SearchResultViewController: UIViewController {
     
 }
 
+//MARK: - UITableViewDelegate,UITableViewDataSource
 extension SearchResultViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -89,12 +90,14 @@ extension SearchResultViewController: UITableViewDelegate, UITableViewDataSource
     
 }
 
+//MARK: - BackTableViewCellDelegate
 extension SearchResultViewController: BackTableViewCellDelegate {
     func tappedNewSearchButton() {
         navigationController?.popViewController(animated: true)
     }
 }
 
+//MARK: - AudioTableViewCellDelegate
 extension SearchResultViewController: AudioTableViewCellDelegate {
     func showErrorAlert(error: String) {
         Alert.showAlert(on: self, withTitle: SearchViewString.alertErrorTitle.rawValue, message: error, actions: nil)
