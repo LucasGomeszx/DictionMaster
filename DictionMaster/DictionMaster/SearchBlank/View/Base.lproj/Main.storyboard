@@ -85,6 +85,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="zsf-lw-mQt"/>
                     <connections>
+                        <outlet property="buttonBottomConstraint" destination="aEs-ub-zre" id="F13-e8-bbG"/>
                         <outlet property="capsuleView" destination="45R-UV-Hzr" id="gAF-Cf-MdR"/>
                         <outlet property="countryImage" destination="aOD-OH-UrG" id="yy3-bL-9r2"/>
                         <outlet property="countryLabel" destination="hPy-rI-Zve" id="1Ei-0P-SIf"/>

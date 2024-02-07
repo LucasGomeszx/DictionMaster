@@ -24,13 +24,21 @@ class SearchBlankViewController: UIViewController {
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var searchContainer: UIView!
     @IBOutlet weak var searchContainerLabel: UILabel!
+    @IBOutlet weak var buttonBottomConstraint: NSLayoutConstraint!
     
     private var viewModel: SearchViewModel = SearchViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        setupNavigation()
+        configNotification()
         viewModel.setViewModelDelegate(delegate: self)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     private func setupView() {
@@ -65,10 +73,35 @@ class SearchBlankViewController: UIViewController {
         ]
         searchTextField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
     }
-
+    
     @objc
     private func tappedSearchButton() {
         viewModel.fetchData(word: searchTextField.text?.lowercased() ?? "")
+    }
+    
+    private func setupNavigation() {
+        navigationController?.navigationBar.isHidden = true
+    }
+    
+    private func configNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            buttonBottomConstraint.constant = keyboardSize.height - 24
+            UIView.animate(withDuration: 0.25) {
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        buttonBottomConstraint.constant = 0
+        UIView.animate(withDuration: 0.25) {
+            self.view.layoutIfNeeded()
+        }
     }
     
 }
