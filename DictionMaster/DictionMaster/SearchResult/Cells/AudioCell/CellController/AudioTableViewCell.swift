@@ -32,13 +32,11 @@ class AudioTableViewCell: UITableViewCell {
     }
     
     private func setupView() {
-        wordLabel.font = .systemFont(ofSize: 45, weight: .bold)
-        wordLabel.font.fontDescriptor.withDesign(.rounded)
-        wordLabel.textColor = UIColor.countryCollor
+        wordLabel.setPrimaryCollorBold(size: 45, text: nil)
         
         speakerContainer.layer.cornerRadius = speakerContainer.frame.size.width / 2
         speakerContainer.layer.masksToBounds = true
-        speakerContainer.backgroundColor = UIColor.searchButton
+        speakerContainer.backgroundColor = UIColor.primaryBlue
         speakerContainer.isUserInteractionEnabled = true
         let gesture = UITapGestureRecognizer(target: self, action: #selector(tappedSpeakerImage))
         speakerContainer.addGestureRecognizer(gesture)
@@ -46,9 +44,7 @@ class AudioTableViewCell: UITableViewCell {
         speakerImage.contentMode = .scaleAspectFill
         speakerImage.clipsToBounds = true
         
-        pronunciationLabel.font = .systemFont(ofSize: 22, weight: .bold)
-        pronunciationLabel.font?.fontDescriptor.withDesign(.rounded)
-        pronunciationLabel.textColor = UIColor.placeholderCollor
+        pronunciationLabel.setPronunciationStyle()
     }
     
     @objc

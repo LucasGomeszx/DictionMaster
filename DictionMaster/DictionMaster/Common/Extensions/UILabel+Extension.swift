@@ -9,17 +9,23 @@ import UIKit
 
 extension UILabel {
     
-    func setPrimaryCollorRegular(size: CGFloat, text: String) {
-        self.textColor = UIColor.countryCollor
+    func setPrimaryCollorRegular(size: CGFloat, text: String?) {
+        self.textColor = UIColor.primaryCollor
         self.text = text
         self.font = .systemFont(ofSize: size, weight: .regular)
         self.font.fontDescriptor.withDesign(.rounded)
     }
     
-    func setPrimaryCollorBold(size: CGFloat, text: String) {
-        self.textColor = UIColor.textFieldCollor
-        self.font = .systemFont(ofSize: 32, weight: .bold)
+    func setPrimaryCollorBold(size: CGFloat, text: String?) {
+        self.textColor = UIColor.primaryCollor
+        self.font = .systemFont(ofSize: size, weight: .bold)
         self.font?.fontDescriptor.withDesign(.rounded)
+    }
+    
+    func setPronunciationStyle() {
+        self.font = .systemFont(ofSize: 22, weight: .bold)
+        self.font?.fontDescriptor.withDesign(.rounded)
+        self.textColor = UIColor.placeholderCollor
     }
     
     func setButtonLabelStyle(text: String) {
@@ -34,12 +40,12 @@ extension UILabel {
         
         let atributosGerais: [NSAttributedString.Key: Any] = [
             .font: UIFont.boldSystemFont(ofSize: 20),
-            .foregroundColor: UIColor.countryCollor
+            .foregroundColor: UIColor.primaryCollor
         ]
         
         let atributosDiferentes: [NSAttributedString.Key: Any] = [
             .font: UIFont.boldSystemFont(ofSize: 20),
-            .foregroundColor: UIColor.searchButton
+            .foregroundColor: UIColor.primaryBlue
         ]
         
         let textoAtribuido = NSMutableAttributedString(string: texto, attributes: atributosGerais)
@@ -60,12 +66,12 @@ extension UILabel {
         
         let atributosGerais: [NSAttributedString.Key: Any] = [
             .font: UIFont.systemFont(ofSize: 16, weight: .regular),
-            .foregroundColor: UIColor.countryCollor
+            .foregroundColor: UIColor.primaryCollor
         ]
         
         let atributosDiferentes: [NSAttributedString.Key: Any] = [
             .font: UIFont.boldSystemFont(ofSize: 16),
-            .foregroundColor: UIColor.countryCollor
+            .foregroundColor: UIColor.primaryCollor
         ]
         
         let textoAtribuido = NSMutableAttributedString(string: texto, attributes: atributosGerais)

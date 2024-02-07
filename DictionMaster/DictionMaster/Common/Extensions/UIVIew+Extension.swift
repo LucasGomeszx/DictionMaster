@@ -12,7 +12,7 @@ extension UIView {
     func setButtonStyle() {
         self.clipsToBounds = true
         self.layer.cornerRadius = 14
-        self.backgroundColor = UIColor.searchButton
+        self.backgroundColor = UIColor.primaryBlue
         self.isUserInteractionEnabled = true
     }
     

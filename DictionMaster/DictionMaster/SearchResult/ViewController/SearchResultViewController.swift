@@ -7,17 +7,15 @@
 
 import UIKit
 
-enum CellType {
-    case audio
-    case meaning
-    case last
+enum SearchViewString: String {
+    case alertErrorTitle = "Error"
 }
 
 class SearchResultViewController: UIViewController {
     
     @IBOutlet weak var resultTableView: UITableView!
     
-    var viewModel: SearchResultViewModel
+    private var viewModel: SearchResultViewModel
     
     init?(coder: NSCoder, myWord: WordModel) {
         self.viewModel = SearchResultViewModel(myWord: myWord)
@@ -58,32 +56,24 @@ extension SearchResultViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellType: CellType
-        
-        switch indexPath.row {
-        case 0:
-            cellType = .audio
-        case tableView.numberOfRows(inSection: 0) - 1:
-            cellType = .last
-        default:
-            cellType = .meaning
-        }
-        
-        switch cellType {
-        case .audio:
-            let cell = tableView.dequeueReusableCell(withIdentifier: AudioTableViewCell.identifier, for: indexPath) as? AudioTableViewCell
-            cell?.setupCell(myWord: viewModel.getMyWord, delegate: self)
-            return cell ?? UITableViewCell()
-            
-        case .meaning:
-            let cell = tableView.dequeueReusableCell(withIdentifier: MeaningTableViewCell.identifier, for: indexPath) as? MeaningTableViewCell
-            cell?.setupCell(myWord: viewModel.getMyWord, index: indexPath.row - 1)
-            return cell ?? UITableViewCell()
-            
-        case .last:
-            let cell = tableView.dequeueReusableCell(withIdentifier: BackTableViewCell.identifier, for: indexPath) as? BackTableViewCell
-            cell?.setupDelegate(myWord: viewModel.getMyWord,delegate: self)
-            return cell ?? UITableViewCell()
+        if indexPath.row == 0 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: AudioTableViewCell.identifier, for: indexPath) as? AudioTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.setupCell(myWord: viewModel.getMyWord, delegate: self)
+            return cell
+        } else if indexPath.row == tableView.numberOfRows(inSection: 0) - 1 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: BackTableViewCell.identifier, for: indexPath) as? BackTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.setupDelegate(myWord: viewModel.getMyWord,delegate: self)
+            return cell
+        } else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: MeaningTableViewCell.identifier, for: indexPath) as? MeaningTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.setupCell(myWord: viewModel.getMyWord, index: indexPath.row - 1)
+            return cell
         }
     }
     
@@ -107,6 +97,6 @@ extension SearchResultViewController: BackTableViewCellDelegate {
 
 extension SearchResultViewController: AudioTableViewCellDelegate {
     func showErrorAlert(error: String) {
-        Alert.showAlert(on: self, withTitle: "Error", message: error, actions: nil)
+        Alert.showAlert(on: self, withTitle: SearchViewString.alertErrorTitle.rawValue, message: error, actions: nil)
     }
 }

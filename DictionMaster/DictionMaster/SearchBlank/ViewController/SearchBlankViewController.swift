@@ -44,7 +44,7 @@ class SearchBlankViewController: UIViewController {
         
         searchTextField.delegate = self
         searchTextField.borderStyle = .none
-        searchTextField.textColor = UIColor.textFieldCollor
+        searchTextField.textColor = UIColor.primaryCollor
         searchTextField.font = .systemFont(ofSize: 32, weight: .bold)
         searchTextField.font?.fontDescriptor.withDesign(.rounded)
         configurePlaceholderStyle()

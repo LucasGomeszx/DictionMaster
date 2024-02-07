@@ -25,15 +25,11 @@ class MeaningTableViewCell: UITableViewCell {
     }
     
     private func setupView() {
-        meaningLabel.font = .systemFont(ofSize: 16, weight: .bold)
-        meaningLabel.font?.fontDescriptor.withDesign(.rounded)
+        meaningLabel.setPrimaryCollorBold(size: 16, text: nil)
         meaningLabel.numberOfLines = 0
-        meaningLabel.textColor = UIColor.countryCollor
-        
-        exampleLabel.font = .systemFont(ofSize: 16, weight: .regular)
-        exampleLabel.font?.fontDescriptor.withDesign(.rounded)
+
+        exampleLabel.setPrimaryCollorRegular(size: 16, text: nil)
         exampleLabel.numberOfLines = 0
-        exampleLabel.textColor = UIColor.countryCollor
     }
     
     public func setupCell(myWord: WordModel, index: Int) {

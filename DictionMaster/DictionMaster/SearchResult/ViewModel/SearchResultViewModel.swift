@@ -44,11 +44,11 @@ class SearchResultViewModel {
         return meaningSize + exampleSize + 50
     }
     
-    var getAudioCellSize: CGFloat {
+    public var getAudioCellSize: CGFloat {
         140
     }
     
-    var getBackCellSize: CGFloat {
+    public var getBackCellSize: CGFloat {
         200
     }
     

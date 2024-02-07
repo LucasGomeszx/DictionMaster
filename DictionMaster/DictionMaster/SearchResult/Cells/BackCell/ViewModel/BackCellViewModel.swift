@@ -9,7 +9,7 @@ import Foundation
 
 class BackCellViewModel {
     
-    var mtWord: WordModel
+    private var mtWord: WordModel
     
     init(mtWord: WordModel) {
         self.mtWord = mtWord

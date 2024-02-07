@@ -7,6 +7,11 @@
 
 import UIKit
 
+enum BackTableViewString: String {
+    case newSearchLabel = "Try another search now!"
+    case backButtonLabel = "NEW SEARCH"
+}
+
 protocol BackTableViewCellDelegate: AnyObject {
     func tappedNewSearchButton()
 }
@@ -16,7 +21,9 @@ class BackTableViewCell: UITableViewCell {
     @IBOutlet weak var lineView: UIView!
     @IBOutlet weak var wordLabel: UILabel!
     @IBOutlet weak var newSearchLabel: UILabel!
-    @IBOutlet weak var newSearchButton: UIButton!
+    @IBOutlet weak var backButtonContainer: UIView!
+    @IBOutlet weak var backButtonLabel: UILabel!
+    
     
     static let identifier: String = String(describing: BackTableViewCell.self)
     
@@ -35,22 +42,15 @@ class BackTableViewCell: UITableViewCell {
     private func setupView() {
         lineView.backgroundColor = UIColor.lineCollor
         
-        wordLabel.font = .systemFont(ofSize: 24, weight: .bold)
-        wordLabel.font.fontDescriptor.withDesign(.rounded)
-        wordLabel.textColor = UIColor.countryCollor
+        wordLabel.setPrimaryCollorBold(size: 24, text: nil)
         
-        newSearchLabel.font = .systemFont(ofSize: 16, weight: .regular)
-        newSearchLabel.font.fontDescriptor.withDesign(.rounded)
-        newSearchLabel.textColor = UIColor.countryCollor
-        newSearchLabel.text = "Try another search now!"
+        newSearchLabel.setPrimaryCollorRegular(size: 16, text: BackTableViewString.newSearchLabel.rawValue)
         
-        newSearchButton.backgroundColor = UIColor.searchButton
-        newSearchButton.clipsToBounds = true
-        newSearchButton.layer.cornerRadius = 14
-        newSearchButton.setTitle("NEW SEARCH", for: .normal)
-        newSearchButton.titleLabel?.font = .systemFont(ofSize: 18, weight: .bold)
-        newSearchButton.titleLabel?.font.fontDescriptor.withDesign(.rounded)
-        newSearchButton.setTitleColor(.white, for: .normal)
+        backButtonContainer.setButtonStyle()
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(tappedSubscribeButton))
+        backButtonContainer.addGestureRecognizer(gesture)
+        
+        backButtonLabel.setButtonLabelStyle(text: BackTableViewString.backButtonLabel.rawValue)
     }
     
     public func setupDelegate(myWord: WordModel,delegate: BackTableViewCellDelegate) {
@@ -59,7 +59,8 @@ class BackTableViewCell: UITableViewCell {
         wordLabel.text = "That's it for \"\(viewModel?.getWord ?? "")\""
     }
     
-    @IBAction func newSearchButton(_ sender: Any) {
+    @objc
+    private func tappedSubscribeButton(_ sender: Any) {
         delegate?.tappedNewSearchButton()
     }
     

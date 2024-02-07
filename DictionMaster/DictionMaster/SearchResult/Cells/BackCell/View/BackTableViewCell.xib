@@ -36,23 +36,29 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lar-b2-Hxt">
-                        <rect key="frame" x="16" y="107" width="330" height="64"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yvg-Ag-lDG">
+                        <rect key="frame" x="18" y="116" width="326" height="64"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mzA-ih-JXy">
+                                <rect key="frame" x="142" y="21.666666666666657" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBlueColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="64" id="Xe1-ef-rFf"/>
+                            <constraint firstItem="mzA-ih-JXy" firstAttribute="centerY" secondItem="yvg-Ag-lDG" secondAttribute="centerY" id="87G-dX-ibt"/>
+                            <constraint firstItem="mzA-ih-JXy" firstAttribute="centerX" secondItem="yvg-Ag-lDG" secondAttribute="centerX" id="FpV-Nm-SWH"/>
+                            <constraint firstAttribute="height" constant="64" id="sDA-mF-pNJ"/>
                         </constraints>
-                        <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                        <connections>
-                            <action selector="newSearchButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="C9U-Wh-a2h"/>
-                        </connections>
-                    </button>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="yvg-Ag-lDG" secondAttribute="trailing" constant="18" id="6eQ-Bz-WKx"/>
                     <constraint firstItem="tr5-YF-4j1" firstAttribute="top" secondItem="e6N-Tf-LtF" secondAttribute="bottom" constant="16" id="73A-wR-UeX"/>
-                    <constraint firstAttribute="trailing" secondItem="lar-b2-Hxt" secondAttribute="trailing" constant="16" id="9CG-Hf-iNQ"/>
+                    <constraint firstAttribute="bottom" secondItem="yvg-Ag-lDG" secondAttribute="bottom" constant="18" id="9Ok-OJ-TJj"/>
                     <constraint firstItem="e6N-Tf-LtF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="BbE-fo-nIx"/>
-                    <constraint firstItem="lar-b2-Hxt" firstAttribute="top" secondItem="tr5-YF-4j1" secondAttribute="bottom" constant="24" id="Fcg-OV-bqU"/>
                     <constraint firstItem="iE7-Uo-Ycf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Ihm-lH-Ob7"/>
                     <constraint firstItem="iE7-Uo-Ycf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="MZG-6j-hLN"/>
                     <constraint firstItem="e6N-Tf-LtF" firstAttribute="top" secondItem="iE7-Uo-Ycf" secondAttribute="bottom" constant="24" id="Q93-qW-nmr"/>
@@ -60,13 +66,14 @@
                     <constraint firstItem="tr5-YF-4j1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="VEJ-xZ-4Ci"/>
                     <constraint firstAttribute="trailingMargin" secondItem="tr5-YF-4j1" secondAttribute="trailing" constant="16" id="cLX-AL-qlw"/>
                     <constraint firstAttribute="trailing" secondItem="iE7-Uo-Ycf" secondAttribute="trailing" id="hPr-aY-yGA"/>
-                    <constraint firstItem="lar-b2-Hxt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="olg-7E-bBk"/>
+                    <constraint firstItem="yvg-Ag-lDG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="18" id="ioY-9X-LDn"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="backButtonContainer" destination="yvg-Ag-lDG" id="GSt-7w-EdR"/>
+                <outlet property="backButtonLabel" destination="mzA-ih-JXy" id="m8C-dB-6wv"/>
                 <outlet property="lineView" destination="iE7-Uo-Ycf" id="5YY-C2-ded"/>
-                <outlet property="newSearchButton" destination="lar-b2-Hxt" id="q7M-BG-0MC"/>
                 <outlet property="newSearchLabel" destination="tr5-YF-4j1" id="zzQ-Pf-a5N"/>
                 <outlet property="wordLabel" destination="e6N-Tf-LtF" id="Alk-7g-k53"/>
             </connections>
@@ -76,6 +83,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
