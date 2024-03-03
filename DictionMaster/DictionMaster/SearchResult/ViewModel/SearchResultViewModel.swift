@@ -17,7 +17,7 @@ class SearchResultViewModel {
     }
     
     public var getNumberOfRows: Int {
-        (myWord.meanings?[0].definitions?.count ?? 0) + 2
+        (myWord.meanings?[0].definitions?.count ?? 0)
     }
     
     public var getMyWord: WordModel {

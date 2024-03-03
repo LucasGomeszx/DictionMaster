@@ -14,6 +14,18 @@ enum SearchViewString: String {
 class SearchResultViewController: UIViewController {
     
     @IBOutlet weak var resultTableView: UITableView!
+    @IBOutlet weak var topContainer: UIView!
+    @IBOutlet weak var wordLabel: UILabel!
+    @IBOutlet weak var speakerContainer: UIView!
+    @IBOutlet weak var speakerImage: UIImageView!
+    @IBOutlet weak var pronunciationLabel: UILabel!
+    @IBOutlet weak var bottonContainer: UIView!
+    @IBOutlet weak var lineView: UIView!
+    @IBOutlet weak var bottonWordLabel: UILabel!
+    @IBOutlet weak var newSearchLabel: UILabel!
+    @IBOutlet weak var backButtonContainer: UIView!
+    @IBOutlet weak var backButtonLabel: UILabel!
+    
     
     private var viewModel: SearchResultViewModel
     
@@ -28,6 +40,7 @@ class SearchResultViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupView()
         configureNavigation()
         setupTableView()
     }
@@ -37,14 +50,40 @@ class SearchResultViewController: UIViewController {
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
     
+    private func setupView() {
+        wordLabel.setPrimaryCollorBold(size: 45, text: nil)
+        
+        speakerContainer.layer.cornerRadius = speakerContainer.frame.size.width / 2
+        speakerContainer.layer.masksToBounds = true
+        speakerContainer.backgroundColor = UIColor.primaryBlue
+        speakerContainer.isUserInteractionEnabled = true
+        //        let gesture = UITapGestureRecognizer(target: self, action: #selector(tappedSpeakerImage))
+        //        speakerContainer.addGestureRecognizer(gesture)
+        
+        speakerImage.contentMode = .scaleAspectFill
+        speakerImage.clipsToBounds = true
+        
+        pronunciationLabel.setPronunciationStyle()
+        
+        lineView.backgroundColor = UIColor.lineCollor
+        
+        bottonWordLabel.setPrimaryCollorBold(size: 24, text: nil)
+        
+        newSearchLabel.setPrimaryCollorRegular(size: 16, text: BackTableViewString.newSearchLabel.rawValue)
+        
+        backButtonContainer.setButtonStyle()
+        //        let gesture = UITapGestureRecognizer(target: self, action: #selector(tappedSubscribeButton))
+        //        backButtonContainer.addGestureRecognizer(gesture)
+        
+        backButtonLabel.setButtonLabelStyle(text: BackTableViewString.backButtonLabel.rawValue)
+    }
+    
     private func setupTableView() {
         resultTableView.delegate = self
         resultTableView.dataSource = self
         resultTableView.allowsSelection = false
         resultTableView.separatorStyle = .none
-        resultTableView.register(AudioTableViewCell.nib(), forCellReuseIdentifier: AudioTableViewCell.identifier)
         resultTableView.register(MeaningTableViewCell.nib(), forCellReuseIdentifier: MeaningTableViewCell.identifier)
-        resultTableView.register(BackTableViewCell.nib(), forCellReuseIdentifier: BackTableViewCell.identifier)
     }
     
 }
@@ -57,35 +96,14 @@ extension SearchResultViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: AudioTableViewCell.identifier, for: indexPath) as? AudioTableViewCell else {
-                return UITableViewCell()
-            }
-            cell.setupCell(myWord: viewModel.getMyWord, delegate: self)
-            return cell
-        } else if indexPath.row == tableView.numberOfRows(inSection: 0) - 1 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: BackTableViewCell.identifier, for: indexPath) as? BackTableViewCell else {
-                return UITableViewCell()
-            }
-            cell.setupDelegate(myWord: viewModel.getMyWord,delegate: self)
-            return cell
-        } else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: MeaningTableViewCell.identifier, for: indexPath) as? MeaningTableViewCell else {
-                return UITableViewCell()
-            }
-            cell.setupCell(myWord: viewModel.getMyWord, index: indexPath.row - 1)
-            return cell
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: MeaningTableViewCell.identifier, for: indexPath) as? MeaningTableViewCell
+        cell?.setupCell(myWord: viewModel.getMyWord, index: indexPath.row)
+        return cell ?? UITableViewCell()
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0 {
-            return viewModel.getAudioCellSize
-        } else if indexPath.row == tableView.numberOfRows(inSection: 0) - 1 {
-            return viewModel.getBackCellSize
-        } else {
-            return viewModel.getCellSize(width: tableView.frame.size.width, index: indexPath.row - 1 )
-        }
+        return viewModel.getCellSize(width: tableView.frame.size.width, index: indexPath.row)
     }
     
 }
