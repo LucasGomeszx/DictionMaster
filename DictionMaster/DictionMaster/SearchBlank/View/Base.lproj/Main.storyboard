@@ -70,6 +70,11 @@
                                     <constraint firstItem="u0E-Xz-lb2" firstAttribute="centerX" secondItem="sRW-92-Lff" secondAttribute="centerX" id="tQa-RS-8ki"/>
                                 </constraints>
                             </view>
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rbb-iG-gT8">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -89,6 +94,7 @@
                         <outlet property="capsuleView" destination="45R-UV-Hzr" id="gAF-Cf-MdR"/>
                         <outlet property="countryImage" destination="aOD-OH-UrG" id="yy3-bL-9r2"/>
                         <outlet property="countryLabel" destination="hPy-rI-Zve" id="1Ei-0P-SIf"/>
+                        <outlet property="loadingView" destination="rbb-iG-gT8" id="lfU-v9-ktc"/>
                         <outlet property="searchContainer" destination="sRW-92-Lff" id="mwC-AA-ADe"/>
                         <outlet property="searchContainerLabel" destination="u0E-Xz-lb2" id="d6f-Vh-YhA"/>
                         <outlet property="searchTextField" destination="LNv-wc-VyE" id="au1-zt-Gzk"/>

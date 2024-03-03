@@ -25,6 +25,7 @@ class SearchBlankViewController: UIViewController {
     @IBOutlet weak var searchContainer: UIView!
     @IBOutlet weak var searchContainerLabel: UILabel!
     @IBOutlet weak var buttonBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var loadingView: UIView!
     
     private var viewModel: SearchViewModel = SearchViewModel()
     private let spinner = UIActivityIndicatorView(style: .large)
@@ -44,6 +45,9 @@ class SearchBlankViewController: UIViewController {
     }
     
     private func setupView() {
+        loadingView.isHidden = true
+        loadingView.backgroundColor = .loadingBackCollor
+        
         capsuleView.backgroundColor = UIColor.capsuleCollor
         capsuleView.clipsToBounds = true
         capsuleView.layer.cornerRadius = 20
@@ -80,7 +84,7 @@ class SearchBlankViewController: UIViewController {
 
     private func setupLoadingIndicator() {
         spinner.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(spinner)
+        loadingView.addSubview(spinner)
 
         NSLayoutConstraint.activate([
             spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -89,10 +93,12 @@ class SearchBlankViewController: UIViewController {
     }
     
     private func showLoading() {
+        loadingView.isHidden = false
         spinner.startAnimating()
     }
 
     private func hideLoading() {
+        loadingView.isHidden = true
         spinner.stopAnimating()
     }
     

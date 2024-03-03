@@ -16,5 +16,6 @@ extension UIColor {
     static let placeholderCollor: UIColor = UIColor(red: 0.02, green: 0.18, blue: 0.22, alpha: 0.50)
     static let pronunciationCollor: UIColor = UIColor(red: 0.02, green: 0.18, blue: 0.22, alpha: 0.40)
     static let primaryBlue: UIColor = UIColor(red: 0.36, green: 0.84, blue: 0.99, alpha: 1.00)
+    static let loadingBackCollor: UIColor = UIColor(red: 50/255, green: 50/255, blue: 50/255, alpha: 0.4)
     
 }
