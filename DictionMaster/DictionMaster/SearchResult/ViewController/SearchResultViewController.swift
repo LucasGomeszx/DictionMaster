@@ -9,6 +9,8 @@ import UIKit
 
 enum SearchViewString: String {
     case alertErrorTitle = "Error"
+    case newSearchLabel = "Try another search now!"
+    case backButtonLabel = "NEW SEARCH"
 }
 
 class SearchResultViewController: UIViewController {
@@ -73,13 +75,13 @@ class SearchResultViewController: UIViewController {
         bottonWordLabel.setPrimaryCollorBold(size: 24, text: nil)
         bottonWordLabel.text = "That's it for \"\(viewModel.getWord)\"!"
         
-        newSearchLabel.setPrimaryCollorRegular(size: 16, text: BackTableViewString.newSearchLabel.rawValue)
+        newSearchLabel.setPrimaryCollorRegular(size: 16, text: SearchViewString.newSearchLabel.rawValue)
         
         backButtonContainer.setButtonStyle()
         let backButtonGesture = UITapGestureRecognizer(target: self, action: #selector(tappedSubscribeButton))
         backButtonContainer.addGestureRecognizer(backButtonGesture)
         
-        backButtonLabel.setButtonLabelStyle(text: BackTableViewString.backButtonLabel.rawValue)
+        backButtonLabel.setButtonLabelStyle(text: SearchViewString.backButtonLabel.rawValue)
     }
     
     private func setupTableView() {
@@ -123,23 +125,11 @@ extension SearchResultViewController: UITableViewDelegate, UITableViewDataSource
     
 }
 
-//MARK: - BackTableViewCellDelegate
-extension SearchResultViewController: BackTableViewCellDelegate {
-    func tappedNewSearchButton() {
-        navigationController?.popViewController(animated: true)
-    }
-}
-
-//MARK: - AudioTableViewCellDelegate
-extension SearchResultViewController: AudioTableViewCellDelegate {
-    func showErrorAlert(error: String) {
-        Alert.showAlert(on: self, withTitle: SearchViewString.alertErrorTitle.rawValue, message: error, actions: nil)
-    }
-}
+//MARK: - SearchResultViewModelDelegate
 
 extension SearchResultViewController: SearchResultViewModelDelegate {
     func showAlertError(error: String) {
-        
+        Alert.showAlert(on: self, withTitle: SearchViewString.alertErrorTitle.rawValue, message: error, actions: nil)
     }
     
     func audioError() {
