@@ -41,6 +41,8 @@ class SearchResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        viewModel.setupDelegate(delegate: self)
+        viewModel.fetchAudio()
         configureNavigation()
         setupTableView()
     }
@@ -57,23 +59,25 @@ class SearchResultViewController: UIViewController {
         speakerContainer.layer.masksToBounds = true
         speakerContainer.backgroundColor = UIColor.primaryBlue
         speakerContainer.isUserInteractionEnabled = true
-        //        let gesture = UITapGestureRecognizer(target: self, action: #selector(tappedSpeakerImage))
-        //        speakerContainer.addGestureRecognizer(gesture)
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(tappedSpeakerImage))
+        speakerContainer.addGestureRecognizer(gesture)
         
         speakerImage.contentMode = .scaleAspectFill
         speakerImage.clipsToBounds = true
-        
+        wordLabel.text = viewModel.getWordText
+        pronunciationLabel.text = viewModel.getWordPhonetic
         pronunciationLabel.setPronunciationStyle()
         
         lineView.backgroundColor = UIColor.lineCollor
         
         bottonWordLabel.setPrimaryCollorBold(size: 24, text: nil)
+        bottonWordLabel.text = "That's it for \"\(viewModel.getWord)\"!"
         
         newSearchLabel.setPrimaryCollorRegular(size: 16, text: BackTableViewString.newSearchLabel.rawValue)
         
         backButtonContainer.setButtonStyle()
-        //        let gesture = UITapGestureRecognizer(target: self, action: #selector(tappedSubscribeButton))
-        //        backButtonContainer.addGestureRecognizer(gesture)
+        let backButtonGesture = UITapGestureRecognizer(target: self, action: #selector(tappedSubscribeButton))
+        backButtonContainer.addGestureRecognizer(backButtonGesture)
         
         backButtonLabel.setButtonLabelStyle(text: BackTableViewString.backButtonLabel.rawValue)
     }
@@ -83,7 +87,18 @@ class SearchResultViewController: UIViewController {
         resultTableView.dataSource = self
         resultTableView.allowsSelection = false
         resultTableView.separatorStyle = .none
+        resultTableView.showsVerticalScrollIndicator = false
         resultTableView.register(MeaningTableViewCell.nib(), forCellReuseIdentifier: MeaningTableViewCell.identifier)
+    }
+    
+    @objc
+    private func tappedSpeakerImage() {
+        viewModel.playDownloadedAudio()
+    }
+    
+    @objc
+    private func tappedSubscribeButton(_ sender: Any) {
+        navigationController?.popToRootViewController(animated: true)
     }
     
 }
@@ -120,4 +135,16 @@ extension SearchResultViewController: AudioTableViewCellDelegate {
     func showErrorAlert(error: String) {
         Alert.showAlert(on: self, withTitle: SearchViewString.alertErrorTitle.rawValue, message: error, actions: nil)
     }
+}
+
+extension SearchResultViewController: SearchResultViewModelDelegate {
+    func showAlertError(error: String) {
+        
+    }
+    
+    func audioError() {
+        speakerContainer.isUserInteractionEnabled = false
+        speakerContainer.backgroundColor = .speakerDisable
+    }
+    
 }

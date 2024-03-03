@@ -7,15 +7,28 @@
 
 import Foundation
 import UIKit
+import AVFoundation
+
+protocol SearchResultViewModelDelegate: AnyObject {
+    func showAlertError(error: String)
+    func audioError()
+}
 
 class SearchResultViewModel {
     
     private var myWord: WordModel
+    private var audioData: Data?
+    private var audioPlayer: AVAudioPlayer?
+    weak var delegate: SearchResultViewModelDelegate?
     
     init(myWord: WordModel) {
         self.myWord = myWord
     }
     
+    public func setupDelegate(delegate: SearchResultViewModelDelegate) {
+        self.delegate = delegate
+    }
+
     public var getNumberOfRows: Int {
         (myWord.meanings?[0].definitions?.count ?? 0)
     }
@@ -44,12 +57,50 @@ class SearchResultViewModel {
         return meaningSize + exampleSize + 50
     }
     
-    public var getAudioCellSize: CGFloat {
-        140
+    public var getWord: String {
+        myWord.word ?? ""
     }
     
-    public var getBackCellSize: CGFloat {
-        200
+}
+
+//MARK: - TopContainer
+extension SearchResultViewModel {
+    
+    public var getAudioUrl: String {
+        myWord.phonetics?[0].audio ?? ""
+    }
+    
+    public var getWordText: String {
+        self.myWord.word?.capitalized ?? ""
+    }
+    
+    public var getWordPhonetic: String {
+        self.myWord.phonetic ?? ""
+    }
+    
+    public func fetchAudio() {
+        ServiceManeger.shered.dowloadAudio(audioUrl: getAudioUrl) { (result: Result<Data, Error>) in
+            switch result {
+            case .success(let success):
+                self.audioData = success
+            case .failure(_):
+                self.delegate?.audioError()
+            }
+        }
+    }
+    
+    public func playDownloadedAudio() {
+        guard let audioData = audioData else {
+            self.delegate?.showAlertError(error: "Audio indisponivel.")
+            return
+        }
+        do {
+            audioPlayer = try AVAudioPlayer(data: audioData)
+            audioPlayer?.prepareToPlay()
+            audioPlayer?.play()
+        } catch _ as NSError {
+            self.delegate?.showAlertError(error: "Audio indisponivel.")
+        }
     }
     
 }
